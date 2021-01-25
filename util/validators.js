@@ -8,7 +8,7 @@ module.exports.validateRegisterInput = (
   if (username.trim() === "") {
     errors.username = "Username must not be empty";
   }
-  
+
   if (email.trim() === "") {
     errors.email = "Email must not be empty";
   } else {
@@ -20,9 +20,14 @@ module.exports.validateRegisterInput = (
   }
 
   if (password === "") {
-    errors.password = "Password must not be empty" ;
-  } else (password !== confirmPassword) {
+    errors.password = "Password must not be empty";
+  } else if (password !== confirmPassword) {
     errors.confirmPassword = "Passwords must match";
   }
-  
+
+  return {
+    errors,
+    // Means there is no errors inside
+    valid: Object.keys(errors).length < 1,
+  };
 };
