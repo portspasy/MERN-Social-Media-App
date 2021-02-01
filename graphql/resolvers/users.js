@@ -21,9 +21,11 @@ module.exports = {
         password,
         confirmPassword
       );
+
       if (!valid) {
         throw new UserInputError("Errors", { errors });
       }
+      
       //TODO: Make sure user doesn't already exist
       const user = await User.findOne({ username });
       if (user) {
