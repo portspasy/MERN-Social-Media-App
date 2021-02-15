@@ -34,11 +34,9 @@ module.exports = {
 
   Mutation: {
     // POST Request
-    // Get a single post from the Database
+    // Create a single post and save into Database
     async createPost(_, { body }, context) {
       const user = checkAuth(context);
-
-      console.log(user);
 
       const newPost = new Post({
         body,
